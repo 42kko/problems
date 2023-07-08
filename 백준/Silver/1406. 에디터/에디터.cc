@@ -77,7 +77,7 @@ int main()
 		}
 		else if (c == 'L')
 		{
-			cursor = cursor > 0 ? pre[cursor] : 0;
+			cursor = pre[cursor] != -1 ? pre[cursor] : 0;
 		}
 		else if (c == 'D')
 		{
