@@ -23,6 +23,7 @@ int main()
     {
         if (board[i / (width * height)][(i / width) - (i / (width * height))][i % width] == 1)
         {
+            // fixme : x,y 값 잘못댐
             q.push(tuple<int, int, int>(i / (width * height), (i / width) - (i / (width * height)), i % width));
             cout << i / (width * height) << (i / width) - (i / (width * height)) << i % width << endl;
         }
