@@ -24,17 +24,17 @@ int main()
     vis[1] = 1;
     while (!q.empty())
     {
-        int cur = q.front();
-        q.pop();
-        for (int i = 0; i < board[cur].size(); i++)
-        {
-            if (vis[board[cur][i]] == 0)
-            {
-                q.push(board[cur][i]);
-                vis[board[cur][i]] = 1;
-                ret++;
-            }
-        }
+        int cur =  q.front();
+		q.pop();
+		for (int i = 0; i < board[cur].size(); i++)
+		{
+			if (vis[board[cur][i]] == 0)
+			{
+				q.push(board[cur][i]);
+				vis[board[cur][i]] = 1;
+				ret++;
+			}
+		}
     }
     cout << ret;
     return 0;
