@@ -49,9 +49,3 @@ int main()
     for(const int &element : ans)
         cout << element<< " ";
 }
-// 문제 정리
-// 배열 A B 가 오고 그 배열을 합친다.
-// A의 크기 b의 크기
-// a 내용 b의 내용
-
-// 절대값이 10 9승 작거나 같다
