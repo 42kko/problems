@@ -17,6 +17,8 @@ int n, m, x;
 int ans = 0;
 
 int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
     cin >> n >> m >> x;
     for (int i = 0; i < m; i++) {
         int u,v,w;
