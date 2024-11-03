@@ -10,17 +10,14 @@ a, aa, aaa, ... uuuuu
 
 string arr = "AEIOU";
 int cnt = 0;
-int answer = 0;
+int ans = 0;
 
 void recursion(string word, string tmp) {
-    if (tmp.size() > 5)
+    if (tmp.size() > 5 || ans != 0)
         return;
     cnt++;
-    if (word == tmp) {
-        answer = cnt;
-        return;
-    }
-
+    if (word == tmp) 
+        ans = cnt;
     for (int i = 0; i < arr.size(); i++) {
         tmp.push_back(arr[i]);
         recursion(word, tmp);
@@ -30,6 +27,6 @@ void recursion(string word, string tmp) {
 
 int solution(string word) {
     recursion(word, "");
-    return answer - 1;
+    return ans - 1;
 }
 
