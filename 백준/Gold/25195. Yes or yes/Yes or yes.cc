@@ -10,11 +10,9 @@ using namespace std;
 */
 
 int n, m, fan_size;
-int fan[100005];
+bool fan[100005];
 bool vist[100005];
 vector<int> v[100005];
-bool meet = false;
-bool end_flag = false;
 
 int main() {
     ios::sync_with_stdio(0);
@@ -27,8 +25,11 @@ int main() {
         v[u].push_back(u1);
     }
     cin >> fan_size;
-    for (int i = 0; i < fan_size; i++)
-        cin >> fan[i];
+    for (int i = 0; i < fan_size; i++) {
+        int tmp;
+        cin >> tmp;
+        fan[tmp] = true;
+    }
 
     stack<int> s;
     s.push(1);
@@ -37,27 +38,18 @@ int main() {
         int cur = s.top();
         s.pop();
 
-        end_flag = false;
-        meet = false;
-        for (int i = 0; i < fan_size; i++) {
-            if (cur == fan[i]) {
-                meet = true;
-                break;
-            }
-        }
-        if (meet)
+        if (fan[cur])   
             continue;
         for (const int e : v[cur]) {
-            end_flag = true;
             if (vist[e]) continue;
             s.push(e);
             vist[e] = true;
         }
-        if (!end_flag && !meet)
-            break;
+
+        if (!v[cur].size()) {
+            cout << "yes";
+            return 0;
+        }
     }
-    if (!end_flag && !meet)
-        cout << "yes";
-    else
-        cout << "Yes";
+    cout << "Yes";
 }
