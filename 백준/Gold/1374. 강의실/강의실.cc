@@ -1,9 +1,19 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <queue>
 using namespace std;
 
 /*
+2 14
+3 8
+6 20
+6 27
+7 13
+12 18
+15 21
+20 25
+
 3 8
 7 13
 2 14
@@ -17,6 +27,7 @@ using namespace std;
 int n;
 vector<pair<int, int> > v;
 vector<int> ans;
+priority_queue<int, vector<int>, greater<int> > pq;
 
 int main() {
     ios::sync_with_stdio(0);
@@ -29,28 +40,16 @@ int main() {
         v.push_back({tmp, tmp1});
     }
     sort(v.begin(), v.end(), [](pair<int, int> &a, pair<int, int> &b) {
-        // if (a.second == b.second)
-        //     return a.first < b.first;
-        // return a.second < b.second;
-
         if (a.first == b.first)
             return a.second < b.second;
         return a.first < b.first;
     });
 
-    ans.push_back(0);
-    bool flag = 0;
-    for (const auto &e : v) {
-        flag = 0;
-        for (int i = 0; i < ans.size(); i++) {
-            if (e.first >= ans[i]) {
-                ans[i] = e.second;
-                flag = 1;
-                break;
-            }
-        }
-        if (!flag)
-            ans.push_back(e.second);
+    pq.push(v[0].second);
+    for (int i = 1; i < n; i++) {
+        if (v[i].first >= pq.top())
+            pq.pop();
+        pq.push(v[i].second);
     }
-    cout << ans.size();
+    cout << pq.size();
 }
