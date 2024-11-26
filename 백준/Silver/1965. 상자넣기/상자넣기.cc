@@ -5,7 +5,6 @@ using namespace std;
 int n;
 int board[1005];
 int dp[1005];
-vector<int> sequence;
 int ans;
 
 int main() {
@@ -13,14 +12,12 @@ int main() {
     cin.tie(0);
 
     cin >> n;
+    // dp[0] = 1;
     for (int i = 0; i < n; i++) {
         cin >> board[i];
-    }
-    for (int i = 0; i < n; i++) {
         for (int j = 0; j < i; j++) {
-            if (board[i] > board[j]) {
+            if (board[i] > board[j])
                 dp[i] = max(dp[i], dp[j] + 1);
-            }
         }
         ans = max(ans, dp[i]);
     }
