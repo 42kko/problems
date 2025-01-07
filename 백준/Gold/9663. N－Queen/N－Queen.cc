@@ -1,29 +1,28 @@
 #include <iostream>
 using namespace std;
-bool used1[17];
-bool used2[17];
-bool used3[17];
+bool cols[25];
+bool left_diag[50];
+bool right_diag[50];
 int n;
 int cnt;
 
-void func(int cur)
+void func(int row)
 {
-    if (cur == n)
+    if (row == n)
     {
         cnt++;
-        return ;
+        return;
     }
     for (int i = 0; i < n; i++)
     {
-        if (used1[i] || used2[i + cur] || used3[cur - i + n - 1])
-            continue;
-        used1[i] = 1;
-        used2[i + cur] = 1;
-        used3[cur - i + n - 1] = 1;
-        func(cur + 1);
-        used1[i] = 0;
-        used2[i + cur] = 0;
-        used3[cur - i + n - 1] = 0;
+        if (cols[i] || left_diag[i + row] || right_diag[row - i + n]) continue;
+        cols[i] = 1;
+        left_diag[i + row] = 1;
+        right_diag[row - i + n] = 1;
+        func(row + 1);
+        cols[i] = 0;
+        left_diag[i + row] = 0;
+        right_diag[row - i + n] = 0;
     }
 }
 
