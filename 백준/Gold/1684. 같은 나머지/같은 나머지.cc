@@ -29,8 +29,7 @@ int main() {
         cin >> arr[i];
         v.push_back(arr[i] - arr[i - 1]);
     }
-    sort(v.begin(), v.end());
-    
+   
     ans = v[0];
     for (int i = 1; i < v.size(); i++) {
         ans = GCD(ans, v[i]);
